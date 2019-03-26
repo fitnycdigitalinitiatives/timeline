@@ -1,0 +1,27 @@
+---
+---
+
+// start content
+@import url('fonts/halyard.css');
+@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+  font-family: "Halyard Micro",sans-serif;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: "Halyard Text",sans-serif;
+  font-weight: 700;
+}
+
+//timeline
+#timeline-viewport {
+  height: calc(100vh - (56px + 70px)); // Navbar plus slider bar at bottom
+}
+#slider-nav-viewport #range-slider {
+  vertical-align: middle;
+}
+#timeline-viewport .owl-stage {
+  display: flex;
+  align-items: center;
+}

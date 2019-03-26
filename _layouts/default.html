@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-us" class="h-100">
+  {% include head.html %}
+  <body class="h-100 d-flex flex-column">
+    <a class="sr-only sr-only-focusable" href="#main">Skip to main content</a>
+    {% include header.html %}
+    <main class="flex-shrink-0" id="main">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+
+  </body>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="{{ '/assets/javascript/owl/owl.carousel.min.js' | relative_url }}"></script>
+  {% if page.title == "Timeline" %}
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
+  <script src="{{ '/assets/javascript/timeline-owl.js' | relative_url }}"></script>
+  {% endif %}
+</html>
