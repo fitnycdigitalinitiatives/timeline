@@ -77,14 +77,17 @@ $(document).ready(function(){
       });
     },
     stop: function(event, ui) {
-      console.log('i ended')
       currentMatrix = $('.owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
       currentxShift = currentMatrix[12] || currentMatrix[4];
-      coordList = currentState.relatedTarget._coordinates;
+      console.log(currentxShift)
+      coordList = [0].concat(currentState.relatedTarget._coordinates);
+      console.log(coordList);
       var closest = coordList.reduce(function(prev, curr) {
         return (Math.abs(curr - currentxShift) < Math.abs(prev - currentxShift) ? curr : prev);
       });
-      var itemIndex = coordList.indexOf(closest) + 1;
+      var itemIndex = coordList.indexOf(closest);
+      console.log(coordList);
+      console.log(itemIndex);
       owl.trigger('to.owl.carousel', itemIndex);
       $('.owl-stage').css({
         "transition": 'all .25s ease 0s'

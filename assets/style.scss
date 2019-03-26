@@ -25,3 +25,16 @@ body {
   display: flex;
   align-items: center;
 }
+#timeline-viewport .owl-item {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+#timeline-viewport .decade {
+  position: absolute;
+  top: -3rem;
+}
+//grid-view
+#grid-view .card-deck .card {
+  flex: 0 0 calc((100% / 4) - 30px);
+  margin-bottom: 30px;
+}
