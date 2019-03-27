@@ -12,28 +12,26 @@ layout: default
       {% for event in group.items %}
       <a href="{{ event.url }}" class="card text-white" data-dateStart="{{ event.dateStart | date: "%Y" }}">
         {% if count == 0 %}
-        <h2 class="decade text-dark">{{decade}}0's</h2>
+        <h2 class="decade text-dark font-italic">{{decade}}0's</h2>
         {% endif %}
-        <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="50vh" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Event image"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="90%" fill="#dee2e6" dy=".3em">Event image</text></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="400px" height="400px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Event image"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect></svg>
 
         <div class="card-img-overlay d-flex justify-content-center align-items-center rounded">
-          <div class="text-block text-center">
-            <h1 class="mb-0">
-              {{ event.title }}
-            </h1>
-            <small>
-              {% assign startYear = event.dateStart | date: "%Y" %}
-              {% assign endYear = event.dateEnd | date: "%Y" %}
-              {% if startYear == endYear %}
-              {{ event.dateStart | date: "%B %e" }} - {{ event.dateEnd | date: "%B %e, %Y" }}
-              {% else %}
-                {{ event.dateStart | date: "%B %e, %Y" }}
-                {% if event.dateEnd %}
-                - {{ event.dateEnd | date: "%B %e, %Y" }}
-                {% endif %}
+          <h1 class="mb-0 text-center .event-title">
+            {{ event.title }}
+          </h1>
+          <p class="small event-date position-absolute mb-0">
+            {% assign startYear = event.dateStart | date: "%Y" %}
+            {% assign endYear = event.dateEnd | date: "%Y" %}
+            {% if startYear == endYear %}
+            {{ event.dateStart | date: "%B %e" }} - {{ event.dateEnd | date: "%B %e, %Y" }}
+            {% else %}
+              {{ event.dateStart | date: "%B %e, %Y" }}
+              {% if event.dateEnd %}
+              - {{ event.dateEnd | date: "%B %e, %Y" }}
               {% endif %}
-            </small>
-          </div>
+            {% endif %}
+          </p>
         </div>
       </a>
       {% assign count = count | plus: 1 %}

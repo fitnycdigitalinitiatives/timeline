@@ -29,9 +29,19 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+#timeline-viewport .card-img {
+  height: auto;
+}
 #timeline-viewport .decade {
   position: absolute;
   top: -3rem;
+}
+#timeline-viewport .event-title {
+  font-size: 4rem;
+}
+#timeline-viewport .event-date {
+  right: 1.25rem;
+  bottom: 1.25rem;
 }
 //grid-view
 #grid-view .card-deck .card {
