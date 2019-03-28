@@ -8,7 +8,7 @@ $(document).ready(function(){
         'max': 100
     }
   });
-  var owl = $('.owl-carousel');
+  var owl = $('#event-carousel');
   var currentState = '';
   owl.on('initialized.owl.carousel', function(event) {
     currentState = event;
@@ -21,20 +21,23 @@ $(document).ready(function(){
             items:1
         },
         576:{
-            items:2
+            items:1
         },
         768:{
-            items:3
+            items:2
         },
         992:{
-            items:3
+            items:2
         },
         1200:{
             items:3
+        },
+        1600:{
+          items:4
         }
     },
     margin: 30,
-    stagePadding: 100,
+    stagePadding: 60,
     nav: false,
     dots: false,
   });
@@ -69,21 +72,21 @@ $(document).ready(function(){
   };
 
   function sliderDrag(currentState) {
-    matrix = $('.owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
+    matrix = $('#event-carousel .owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
     xShift = matrix[12] || matrix[4];
     slider.noUiSlider.set(Math.abs(xShift));
   }
   // Move Timeline by moving range input
   slider.noUiSlider.on('update', function (values, handle) {
     rangeShift = values[handle];
-    $('.owl-stage').css({
+    $('#event-carousel .owl-stage').css({
       "transform": "translate3d(" + -rangeShift + "px, 0px, 0px)",
       "transition": 'all 0s ease 0s'
     });
   });
   // Move Timeline to the Appropriate Item Based on Nearest Position
   slider.noUiSlider.on('end', function (values, handle) {
-    currentMatrix = $('.owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
+    currentMatrix = $('#event-carousel .owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
     currentxShift = currentMatrix[12] || currentMatrix[4];
     console.log(currentxShift)
     coordList = [0].concat(currentState.relatedTarget._coordinates);
@@ -95,7 +98,7 @@ $(document).ready(function(){
     console.log(coordList);
     console.log(itemIndex);
     owl.trigger('to.owl.carousel', itemIndex);
-    $('.owl-stage').css({
+    $('#event-carousel .owl-stage').css({
       "transition": 'all .25s ease 0s'
     });
   });
@@ -110,4 +113,17 @@ $(document).ready(function(){
       owl.trigger('prev.owl.carousel');
   });
 
+});
+//Only load the tag carousel after the entire page loads because font rendering messes up the auto width
+$(window).bind("load", function() {
+  var tagOwl = $('#tag-carousel');
+  tagOwl.owlCarousel({
+    autoWidth:true,
+    loop: true,
+    margin: 15,
+    items: 30,
+    stagePadding: 25,
+    nav: false,
+    dots: false
+  });
 });

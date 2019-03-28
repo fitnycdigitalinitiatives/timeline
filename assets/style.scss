@@ -16,7 +16,10 @@ body {
 
 //timeline
 #timeline-viewport {
-  height: calc(100vh - (56px + 70px)); // Navbar plus slider bar at bottom
+  height: calc(100vh - (56px + 70px + 126px)); // Navbar plus tags plus slider bar at bottom
+}
+#slider-nav-viewport {
+  height: 126px;
 }
 #slider-nav-viewport #range-slider {
   vertical-align: middle;
@@ -43,8 +46,20 @@ body {
   right: 1.25rem;
   bottom: 1.25rem;
 }
+#tag-viewport {
+  height: 70px;
+}
+#tag-viewport .tag {
+}
 //grid-view
 #grid-view .card-deck .card {
   flex: 0 0 calc((100% / 4) - 30px);
   margin-bottom: 30px;
+}
+//tag-view
+.tag-frame {
+  display: none;
+}
+:target{
+  display: block;
 }
