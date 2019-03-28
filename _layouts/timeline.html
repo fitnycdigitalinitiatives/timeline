@@ -3,15 +3,17 @@ layout: default
 ---
 <div class="container-fluid">
   <div class="row align-items-center" id="tag-viewport">
-    <div class="owl-carousel" id="tag-carousel">
-      {% assign mapTags =  site.data.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
-      {% assign tags = mapTags | split: ", " | uniq %}
-      {% for tag in tags %}
-      <div class="tag p-2 bg-light small rounded d-inline-block">
-        {{tag}}
+    <div class="col">
+      <div class="owl-carousel" id="tag-carousel">
+        {% assign mapTags =  site.data.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
+        {% assign tags = mapTags | split: ", " | uniq %}
+        {% for tag in tags %}
+        <div class="tag p-2 bg-light small rounded d-inline-block">
+          {{tag}}
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
+    </div>    
   </div>
   <div class="row align-items-center" id="timeline-viewport">
     <div class="owl-carousel" id="event-carousel">

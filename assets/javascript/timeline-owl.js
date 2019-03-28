@@ -120,9 +120,8 @@ $(window).bind("load", function() {
   tagOwl.owlCarousel({
     autoWidth:true,
     loop: true,
-    margin: 15,
-    items: 30,
-    stagePadding: 25,
+    margin: 30,
+    items: 27,
     nav: false,
     dots: false
   });
