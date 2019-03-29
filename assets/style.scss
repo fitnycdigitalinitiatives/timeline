@@ -57,7 +57,10 @@ body {
   margin-bottom: 30px;
 }
 //tag-view
-
+#tag-view .card-deck .card {
+  flex: 0 0 calc((100% / 4) - 30px);
+  margin-bottom: 30px;
+}
 #tag-view .tag-frame:target{
   display: block;
 }

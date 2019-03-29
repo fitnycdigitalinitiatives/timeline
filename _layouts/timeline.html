@@ -5,8 +5,7 @@ layout: default
   <div class="row align-items-center" id="tag-viewport">
     <div class="col">
       <div class="owl-carousel" id="tag-carousel">
-        {% assign mapTags =  site.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
-        {% assign tags = mapTags | split: ", " | uniq %}
+        {% assign tags = site.events | map: 'tags' | uniq %}
         {% for tag in tags %}
         <div class="tag p-2 bg-light small rounded d-inline-block">
           {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
@@ -26,7 +25,7 @@ layout: default
       {% assign decade = group.name  %}
       {% assign count = 0  %}
       {% for event in group.items %}
-      <a href="{{ event.url }}" class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}">
+      <a href="{{ event.url | relative_url }}" class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}">
         {% if count == 0 %}
         <h2 class="decade text-dark font-italic">{{decade}}0's</h2>
         {% endif %}
