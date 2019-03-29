@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="container mt-5" id="grid-view">
 
-    {% assign sortedEvents = site.data.events | sort: 'dateStart' %}
+    {% assign sortedEvents = site.events | sort: 'dateStart' %}
     {% assign groups = sortedEvents | group_by_exp:"item", "item.dateStart | truncate: 3, ''"  %}
     {% for group in groups %}
     <h1>{{ group.name }}0's</h1>

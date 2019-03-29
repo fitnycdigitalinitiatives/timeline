@@ -3,13 +3,13 @@ layout: default
 ---
 <div class="container mt-5" id="tag-view">
 
-  {% assign mapTags =  site.data.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
+  {% assign mapTags =  site.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
   {% assign tags = mapTags | split: ", " | uniq %}
   {% for tag in tags %}
-  <div class="tag-frame" id="{{ tag }}">  
+  <div class="tag-frame" id="{{ tag | url_encode }}">
     <h1>{{ tag }}</h1>
     <div class="card-deck pt-3">
-      {% for event in site.data.events %}
+      {% for event in site.events %}
       {% assign tagsArray = event.tags | remove: "[" | remove: "]" | split: ", " | uniq %}
         {% for tagArray in tagsArray %}
           {% if tagArray == tag %}

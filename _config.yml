@@ -23,7 +23,10 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 collections:
   events:
-    output: true
+    output: true # makes sure pages are output as html files
+    layout: event # the layout for the pages to use
+    metadata:
+      source: events.csv # path to the metadata file within `_data`
 
 
 # Build settings
@@ -44,3 +47,4 @@ future: true
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+#   - Rakefile

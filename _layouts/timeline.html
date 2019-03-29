@@ -5,19 +5,22 @@ layout: default
   <div class="row align-items-center" id="tag-viewport">
     <div class="col">
       <div class="owl-carousel" id="tag-carousel">
-        {% assign mapTags =  site.data.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
+        {% assign mapTags =  site.events | map: 'tags' | join: ', ' | remove: "[" | remove: "]" %}
         {% assign tags = mapTags | split: ", " | uniq %}
         {% for tag in tags %}
         <div class="tag p-2 bg-light small rounded d-inline-block">
-          {{tag}}
+          {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
+          <a href="{{ tagURL | relative_url }}" class="text-dark">
+            {{tag}}
+          </a>
         </div>
         {% endfor %}
       </div>
-    </div>    
+    </div>
   </div>
   <div class="row align-items-center" id="timeline-viewport">
     <div class="owl-carousel" id="event-carousel">
-      {% assign sortedEvents = site.data.events | sort: 'dateStart' %}
+      {% assign sortedEvents = site.events | sort: 'dateStart' %}
       {% assign groups = sortedEvents | group_by_exp:"item", "item.dateStart | truncate: 3, ''"  %}
       {% for group in groups %}
       {% assign decade = group.name  %}

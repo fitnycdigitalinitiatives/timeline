@@ -57,9 +57,10 @@ body {
   margin-bottom: 30px;
 }
 //tag-view
-.tag-frame {
-  display: none;
-}
-:target{
+
+#tag-view .tag-frame:target{
   display: block;
+}
+#tag-view .tag-frame:not(:target){
+  display: none;
 }
