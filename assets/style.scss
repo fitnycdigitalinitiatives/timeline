@@ -51,6 +51,38 @@ body {
 }
 #tag-viewport .tag {
 }
+//single-view
+#single-viewport {
+  height: calc(100vh - (56px + 126px)); // Navbar plus tags plus slider bar at bottom
+}
+#slider-nav-viewport {
+  height: 126px;
+}
+#slider-nav-viewport #range-slider {
+  vertical-align: middle;
+}
+#single-viewport .owl-stage {
+  display: flex;
+  align-items: center;
+}
+#single-viewport .owl-item {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+#single-viewport .card-img {
+  height: auto;
+}
+#single-viewport .decade {
+  position: absolute;
+  top: -3rem;
+}
+#single-viewport .event-title {
+  font-size: 4rem;
+}
+#single-viewport .event-date {
+  right: 1.25rem;
+  bottom: 1.25rem;
+}
 //grid-view
 #grid-view .card-deck .card {
   flex: 0 0 calc((100% / 4) - 30px);
