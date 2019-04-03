@@ -53,24 +53,15 @@ body {
 }
 //single-view
 #single-viewport {
-  height: calc(100vh - (56px + 126px)); // Navbar plus tags plus slider bar at bottom
-}
-#slider-nav-viewport {
-  height: 126px;
-}
-#slider-nav-viewport #range-slider {
-  vertical-align: middle;
+  height: calc(100vh - (56px + 70px + 126px)); // Navbar plus tags plus slider bar at bottom
+  margin-top: 70px;
 }
 #single-viewport .owl-stage {
   display: flex;
   align-items: center;
 }
-#single-viewport .owl-item {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
 #single-viewport .card-img {
-  height: auto;
+  height: calc(100vh - (56px + 70px + 126px));
 }
 #single-viewport .decade {
   position: absolute;
@@ -80,8 +71,7 @@ body {
   font-size: 4rem;
 }
 #single-viewport .event-date {
-  right: 1.25rem;
-  bottom: 1.25rem;
+  font-size: 1.25rem;
 }
 //grid-view
 #grid-view .card-deck .card {

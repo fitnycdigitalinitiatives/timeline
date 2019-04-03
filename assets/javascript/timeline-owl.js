@@ -57,6 +57,12 @@ $(document).ready(function(){
     pageSize = currentState.page.size;
     itemCount = currentState.item.count;
     coordIndex = itemCount - pageSize - 1;
+    var dateArray = [];
+    $( ".owl-item .card" ).each(function( index ) {
+      dateArray.push($(this).data('datestart'));
+    });
+
+    console.log(compressArray(dateArray));
     if (coordIndex < 0) {
       $('#range-slider').hide();
     }
@@ -112,6 +118,37 @@ $(document).ready(function(){
       // Parameters has to be in square bracket '[]'
       owl.trigger('prev.owl.carousel');
   });
+
+  function compressArray(original) {
+
+  	var compressed = [];
+  	// make a copy of the input array
+  	var copy = original.slice(0);
+
+  	// first loop goes over every element
+  	for (var i = 0; i < original.length; i++) {
+
+  		var myCount = 0;
+  		// loop over every element in the copy and see if it's the same
+  		for (var w = 0; w < copy.length; w++) {
+  			if (original[i] == copy[w]) {
+  				// increase amount of times duplicate is found
+  				myCount++;
+  				// sets item to undefined
+  				delete copy[w];
+  			}
+  		}
+
+  		if (myCount > 0) {
+  			var a = new Object();
+  			a.value = original[i];
+  			a.width = myCount / original.length;
+  			compressed.push(a);
+  		}
+  	}
+
+  	return compressed;
+  };
 
 });
 //Only load the tag carousel after the entire page loads because font rendering messes up the auto width
