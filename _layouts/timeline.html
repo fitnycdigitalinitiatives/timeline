@@ -25,7 +25,7 @@ layout: default
       {% assign decade = group.name  %}
       {% assign count = 0  %}
       {% for event in group.items %}
-      <a href="{{ event.url | relative_url }}" class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}">
+      <div class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}">
         {% if count == 0 %}
         <h2 class="decade text-dark font-italic">{{decade}}0's</h2>
         {% endif %}
@@ -37,7 +37,9 @@ layout: default
 
         <div class="card-img-overlay d-flex justify-content-center align-items-center rounded">
           <h1 class="mb-0 text-center event-title">
-            {{ event.title }}
+            <a href="{{ event.url | relative_url }}" class="text-white">
+              {{ event.title }}
+            </a>
           </h1>
           <p class="small event-date position-absolute mb-0">
             {% assign startYear = event.dateStart | date: "%Y" %}
@@ -52,7 +54,7 @@ layout: default
             {% endif %}
           </p>
         </div>
-      </a>
+      </div>
       {% assign count = count | plus: 1 %}
       {% endfor %}
       {% endfor %}
