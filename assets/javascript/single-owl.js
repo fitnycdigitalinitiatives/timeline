@@ -48,6 +48,37 @@ $(document).ready(function(){
           'max': Math.abs(maxSlider)
         }
       });
+      // Set up date markers
+      var dateArray = [];
+      $(".owl-item .card").each(function(index) {
+        dateArray.push($(this).data('datestart'));
+      });
+      coordListMarker = [0].concat(currentState.relatedTarget._coordinates);
+      var dateArrayObject = [];
+      var currentDate = '';
+      for (var x in dateArray) {
+        dateObject = {};
+        if (dateArray[x] != currentDate) {
+          dateObject.value = dateArray[x];
+          if ((Math.abs(coordListMarker[x])) > (Math.abs(maxSlider))) {
+            dateObject.coordinate = maxSlider;
+          } else {
+            dateObject.coordinate = coordListMarker[x];
+          }
+          dateArrayObject.push(dateObject);
+          // set current
+          currentDate = dateArray[x];
+        }
+      }
+      // delete old markers
+      $('.date-marker').detach();
+      // add new
+      for (var x in dateArrayObject) {
+        var percentLeft = (Math.abs(dateArrayObject[x].coordinate) / Math.abs(maxSlider)) * 100;
+        $('#range-slider').append(
+          '<div class="date-marker" style="left: ' + percentLeft + '%;">' + dateArrayObject[x].value + '</div>'
+        );
+      }
     }
   };
 
@@ -65,7 +96,7 @@ $(document).ready(function(){
     });
   });
   // Move Timeline to the Appropriate Item Based on Nearest Position
-  slider.noUiSlider.on('end', function (values, handle) {
+  slider.noUiSlider.on('change', function (values, handle) {
     currentMatrix = $('#single-carousel .owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
     currentxShift = currentMatrix[12] || currentMatrix[4];
     console.log(currentxShift)

@@ -57,12 +57,6 @@ $(document).ready(function(){
     pageSize = currentState.page.size;
     itemCount = currentState.item.count;
     coordIndex = itemCount - pageSize - 1;
-    var dateArray = [];
-    $( ".owl-item .card" ).each(function( index ) {
-      dateArray.push($(this).data('datestart'));
-    });
-
-    console.log(compressArray(dateArray));
     if (coordIndex < 0) {
       $('#range-slider').hide();
     }
@@ -74,6 +68,37 @@ $(document).ready(function(){
           'max': Math.abs(maxSlider)
         }
       });
+      // Set up date markers
+      var dateArray = [];
+      $(".owl-item .card").each(function(index) {
+        dateArray.push($(this).data('datestart'));
+      });
+      coordListMarker = [0].concat(currentState.relatedTarget._coordinates);
+      var dateArrayObject = [];
+      var currentDate = '';
+      for (var x in dateArray) {
+        dateObject = {};
+        if (dateArray[x] != currentDate) {
+          dateObject.value = dateArray[x];
+          if ((Math.abs(coordListMarker[x])) > (Math.abs(maxSlider))) {
+            dateObject.coordinate = maxSlider;
+          } else {
+            dateObject.coordinate = coordListMarker[x];
+          }
+          dateArrayObject.push(dateObject);
+          // set current
+          currentDate = dateArray[x];
+        }
+      }
+      // delete old markers
+      $('.date-marker').detach();
+      // add new
+      for (var x in dateArrayObject) {
+        var percentLeft = (Math.abs(dateArrayObject[x].coordinate) / Math.abs(maxSlider)) * 100;
+        $('#range-slider').append(
+          '<div class="date-marker" style="left: ' + percentLeft + '%;">' + dateArrayObject[x].value + '</div>'
+        );
+      }
     }
   };
 
@@ -91,18 +116,14 @@ $(document).ready(function(){
     });
   });
   // Move Timeline to the Appropriate Item Based on Nearest Position
-  slider.noUiSlider.on('end', function (values, handle) {
+  slider.noUiSlider.on('change', function (values, handle) {
     currentMatrix = $('#event-carousel .owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
     currentxShift = currentMatrix[12] || currentMatrix[4];
-    console.log(currentxShift)
     coordList = [0].concat(currentState.relatedTarget._coordinates);
-    console.log(coordList);
     var closest = coordList.reduce(function(prev, curr) {
       return (Math.abs(curr - currentxShift) < Math.abs(prev - currentxShift) ? curr : prev);
     });
     var itemIndex = coordList.indexOf(closest);
-    console.log(coordList);
-    console.log(itemIndex);
     owl.trigger('to.owl.carousel', itemIndex);
     $('#event-carousel .owl-stage').css({
       "transition": 'all .25s ease 0s'
@@ -118,38 +139,6 @@ $(document).ready(function(){
       // Parameters has to be in square bracket '[]'
       owl.trigger('prev.owl.carousel');
   });
-
-  function compressArray(original) {
-
-  	var compressed = [];
-  	// make a copy of the input array
-  	var copy = original.slice(0);
-
-  	// first loop goes over every element
-  	for (var i = 0; i < original.length; i++) {
-
-  		var myCount = 0;
-  		// loop over every element in the copy and see if it's the same
-  		for (var w = 0; w < copy.length; w++) {
-  			if (original[i] == copy[w]) {
-  				// increase amount of times duplicate is found
-  				myCount++;
-  				// sets item to undefined
-  				delete copy[w];
-  			}
-  		}
-
-  		if (myCount > 0) {
-  			var a = new Object();
-  			a.value = original[i];
-  			a.width = myCount / original.length;
-  			compressed.push(a);
-  		}
-  	}
-
-  	return compressed;
-  };
-
 });
 //Only load the tag carousel after the entire page loads because font rendering messes up the auto width
 $(window).bind("load", function() {

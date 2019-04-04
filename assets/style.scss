@@ -24,6 +24,34 @@ body {
 #slider-nav-viewport #range-slider {
   vertical-align: middle;
 }
+#slider-nav-viewport #range-slider .date-marker {
+  position: absolute;
+  transform: translateX(-50%);
+}
+#slider-nav-viewport #range-slider .date-marker:nth-child(odd) {
+  top: 2rem;
+}
+#slider-nav-viewport #range-slider .date-marker:nth-child(odd)::after {
+  content: '';
+  width: 1px;
+  height: 12px;
+  background-color: #a0adb9;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+}
+#slider-nav-viewport #range-slider .date-marker:nth-child(even) {
+  bottom: 2rem;
+}
+#slider-nav-viewport #range-slider .date-marker:nth-child(even):after {
+  content: '';
+  width: 1px;
+  height: 12px;
+  background-color: #a0adb9;
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+}
 #timeline-viewport .owl-stage {
   display: flex;
   align-items: center;
@@ -53,15 +81,15 @@ body {
 }
 //single-view
 #single-viewport {
-  height: calc(100vh - (56px + 70px + 126px)); // Navbar plus tags plus slider bar at bottom
-  margin-top: 70px;
+  height: calc(100vh - (56px + 60px + 126px)); // Navbar plus tags plus slider bar at bottom
+  margin-top: 60px;
 }
 #single-viewport .owl-stage {
   display: flex;
   align-items: center;
 }
 #single-viewport .card-img {
-  height: calc(100vh - (56px + 70px + 126px));
+  height: calc(100vh - (56px + 60px + 126px));
 }
 #single-viewport .decade {
   position: absolute;
