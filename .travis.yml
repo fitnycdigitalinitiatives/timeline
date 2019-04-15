@@ -2,8 +2,6 @@ sudo: required
 language: ruby
 rvm:
   - 2.4
-addons:
-  firefox: latest
 git:
   depth: 1
 branches:
@@ -14,4 +12,4 @@ before_script:
 script:
   - bundle exec jekyll build
 after_success:
-  - bundle exec rake wax:push:gh
+  - bundle exec rake wax:push gh-pages
