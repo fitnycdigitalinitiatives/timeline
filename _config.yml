@@ -48,3 +48,6 @@ future: true
 #   - vendor/gems/
 #   - vendor/ruby/
 #   - Rakefile
+exclue:
+  - Rakefile
+  - .travis.yml
