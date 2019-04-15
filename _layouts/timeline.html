@@ -5,8 +5,16 @@ layout: default
   <div class="row align-items-center" id="tag-viewport">
     <div class="col">
       <div class="owl-carousel" id="tag-carousel">
-        {% assign tags = site.events | map: 'tags' | uniq %}
-        {% for tag in tags %}
+        {% assign taglist = '' %}
+        {{ taglist }}
+        {% for event in site.events %}
+          {% assign tags = event.tTags | split:'~' %}
+          {% for tag in tags %}
+            {% assign taglist = taglist | append: tag | append: '~' %}
+          {% endfor %}
+        {% endfor %}
+        {% assign taglist = taglist | split: '~' | uniq %}
+        {% for tag in taglist %}
         <div class="tag p-2 bg-light small rounded d-inline-block">
           {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
           <a href="{{ tagURL | relative_url }}" class="text-dark">

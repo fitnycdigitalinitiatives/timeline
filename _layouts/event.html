@@ -32,7 +32,8 @@ layout: default
         {{page.description}}
       </p>
       <ul class="list-inline mx-3">
-        {% for tag in page.tags %}
+        {% assign tags = page.tTags | split: "~" %}
+        {% for tag in tags %}
         <li class="list-inline-item small">
           {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
           <a href="{{ tagURL | relative_url }}" class="text-dark">
