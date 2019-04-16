@@ -42,7 +42,7 @@ layout: default
               {{ event.title }}
             </h1>
             <p>
-              {{event.description}}
+              {{event.description | newline_to_br}}
             </p>
             <p>
               <a class="text-white" href="{{ event.url | relative_url }}">

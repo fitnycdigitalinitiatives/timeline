@@ -25,7 +25,7 @@ layout: default
       <img class="img-fluid mb-4" src="{{ imageURL | relative_url }}" alt="{{ page.title }}">
       {% endif %}
       <p>
-        {{page.description}}
+        {{page.description | newline_to_br}}
       </p>
       <ul class="list-inline mx-3">
         {% assign tags = page.tTags | split: "~" %}
