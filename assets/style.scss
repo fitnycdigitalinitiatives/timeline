@@ -2,15 +2,14 @@
 ---
 
 // start content
-@import url('fonts/halyard.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
 @import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
-  font-family: "Halyard Micro",sans-serif;
+  font-family: "Roboto",sans-serif;
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: "Halyard Text",sans-serif;
   font-weight: 700;
 }
 
