@@ -37,9 +37,9 @@ layout: default
         {% if count == 0 %}
         <h2 class="decade text-dark font-italic">{{decade}}0's</h2>
         {% endif %}
-        {% if event.image %}
-        {% capture imageURL %}/assets/img/{{ event.image }}{% endcapture %}
-        <img class="card-img" src="{{ imageURL | relative_url }}" alt="{{ event.title }}">          
+        {% if event.image-tile %}
+        {% capture imageURL %}/assets/img/{{ event.image-tile }}{% endcapture %}
+        <img class="card-img" src="{{ imageURL | relative_url }}" alt="{{ event.title }}">
         {% else %}
         <svg class="card-img" width="400px" height="400px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Event image">
           <title>Placeholder</title>

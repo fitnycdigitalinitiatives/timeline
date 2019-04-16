@@ -89,6 +89,7 @@ body {
 }
 #single-viewport .card-img {
   height: calc(100vh - (56px + 60px + 126px));
+  object-fit: cover;
 }
 #single-viewport .decade {
   position: absolute;
