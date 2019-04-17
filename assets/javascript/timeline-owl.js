@@ -99,6 +99,20 @@ $(document).ready(function(){
           '<div class="date-marker" style="left: ' + percentLeft + '%;">' + dateArrayObject[x].value + '</div>'
         );
       }
+      // remove duplicates
+      var yearArray = [];
+      var duplicates = $('.date-marker').filter(function() {
+        return $(this).attr( "style" ) == 'left: 100%;';
+      });
+      duplicates.each(function(index) {
+        yearArray.push(Number($(this).text()));
+      });
+      var maxYear = Math.max.apply(Math,yearArray);
+      duplicates.each(function(index) {
+        if ((Number($(this).text())) != maxYear) {
+          $(this).detach();
+        }
+      });
     }
   };
 

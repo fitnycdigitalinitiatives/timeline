@@ -12,7 +12,9 @@ body {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
-
+.card-img-overlay {
+  background: rgba(0,0,0,0.4)
+}
 //timeline
 #timeline-viewport {
   height: calc(100vh - (56px + 70px + 126px)); // Navbar plus tags plus slider bar at bottom

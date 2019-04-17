@@ -42,11 +42,11 @@ layout: default
               {{ event.title }}
             </h1>
             <p>
-              {{event.description | newline_to_br}}
+              {{event.description | newline_to_br | truncatewords: 75}}
             </p>
             <p>
               <a class="text-white" href="{{ event.url | relative_url }}">
-                Read more...
+                Continue reading
               </a>
             </p>
           </div>

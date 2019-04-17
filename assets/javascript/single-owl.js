@@ -79,6 +79,20 @@ $(document).ready(function(){
           '<div class="date-marker" style="left: ' + percentLeft + '%;">' + dateArrayObject[x].value + '</div>'
         );
       }
+      // remove duplicates
+      var yearArray = [];
+      var duplicates = $('.date-marker').filter(function() {
+        return $(this).attr( "style" ) == 'left: 100%;';
+      });
+      duplicates.each(function(index) {
+        yearArray.push(Number($(this).text()));
+      });
+      var maxYear = Math.max.apply(Math,yearArray);
+      duplicates.each(function(index) {
+        if ((Number($(this).text())) != maxYear) {
+          $(this).detach();
+        }
+      });
     }
   };
 
@@ -99,15 +113,11 @@ $(document).ready(function(){
   slider.noUiSlider.on('change', function (values, handle) {
     currentMatrix = $('#single-carousel .owl-stage').css( "transform").replace(/[^0-9\-.,]/g, '').split(',');
     currentxShift = currentMatrix[12] || currentMatrix[4];
-    console.log(currentxShift)
     coordList = [0].concat(currentState.relatedTarget._coordinates);
-    console.log(coordList);
     var closest = coordList.reduce(function(prev, curr) {
       return (Math.abs(curr - currentxShift) < Math.abs(prev - currentxShift) ? curr : prev);
     });
     var itemIndex = coordList.indexOf(closest);
-    console.log(coordList);
-    console.log(itemIndex);
     owl.trigger('to.owl.carousel', itemIndex);
     $('#single-carousel .owl-stage').css({
       "transition": 'all .25s ease 0s'
