@@ -25,7 +25,7 @@ layout: default
         {% endif %}
 
         <div class="card-img-overlay d-flex justify-content-end align-items-center rounded" data-dateStart="{{ event.dateStart | date: "%Y" }}">
-          <div class="col-12 col-md-8 col-lg-4">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-4">
             <h2 class="event-date mb-0">
               {% assign startYear = event.dateStart | date: "%Y" %}
               {% assign endYear = event.dateEnd | date: "%Y" %}
@@ -38,13 +38,18 @@ layout: default
                 {% endif %}
               {% endif %}
             </h2>
-            <h1 class="event-title">
+            <h1 class="event-title d-none d-md-block">
               {{ event.title }}
             </h1>
-            <p>
+            <h1 class="event-title d-md-none">
+              <a class="text-white" href="{{ event.url | relative_url }}">
+                {{ event.title }}
+              </a>
+            </h1>
+            <p class="d-none d-md-block">
               {{event.description | newline_to_br | truncatewords: 75}}
             </p>
-            <p>
+            <p class="d-none d-md-block">
               <a class="text-white" href="{{ event.url | relative_url }}">
                 Continue reading
               </a>
@@ -58,13 +63,13 @@ layout: default
     </div>
   </div>
   <div class="row align-items-center justify-content-center py-3" id="slider-nav-viewport">
-    <div class="col-auto">
+    <div class="col-auto d-none d-md-block">
       <button type="button" class="btn btn-light" id="previous">Previous</button>
     </div>
     <div class="col">
       <div class="w-100" id="range-slider"></div>
     </div>
-    <div class="col-auto">
+    <div class="col-auto d-none d-md-block">
       <button type="button" class="btn btn-light" id="next">Next</button>
     </div>
   </div>
