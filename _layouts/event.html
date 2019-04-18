@@ -27,10 +27,20 @@ layout: default
       <p>
         {{page.description | newline_to_br}}
       </p>
-      <ul class="list-inline mx-3">
-        {% assign tags = page.tTags | split: "~" %}
+      {% if page.video %}
+      <div class="embed-responsive embed-responsive-16by9 my-4">
+        <iframe class="embed-responsive-item" src="{{ page.video }}" allowfullscreen></iframe>
+      </div>
+      {% endif %}
+      {% if page.link %}
+      <p>
+        Read more about <a href="{{ page.link }}">{{ page.title}}</a>.
+      </p>
+      {% endif %}
+      <ul class="list-inline">
+        {% assign tags = page.tTags | split: ', ' %}
         {% for tag in tags %}
-        <li class="list-inline-item small">
+        <li class="list-inline-item small p-2 bg-light rounded">
           {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
           <a href="{{ tagURL | relative_url }}" class="text-dark">
             {{tag}}
