@@ -77,6 +77,12 @@ body {
 #timeline-viewport .card-img {
   height: auto;
 }
+@media (min-width: 768px) {
+  #timeline-viewport .card-img {
+    max-height: calc(100vh - (56px + 70px + 126px + 6rem)); // Height of viewport row plus with padding taken into account
+    object-fit: cover;
+  }
+}
 #timeline-viewport .decade {
   position: absolute;
   top: -3rem;

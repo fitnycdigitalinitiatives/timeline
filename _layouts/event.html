@@ -40,7 +40,7 @@ layout: default
       <ul class="list-inline">
         {% assign tags = page.tTags | split: ', ' %}
         {% for tag in tags %}
-        <li class="list-inline-item small p-2 bg-light rounded">
+        <li class="list-inline-item small p-2 mb-2 bg-light rounded">
           {% capture tagURL %}/tags/#{{ tag | url_encode }}{% endcapture %}
           <a href="{{ tagURL | relative_url }}" class="text-dark">
             {{tag}}
