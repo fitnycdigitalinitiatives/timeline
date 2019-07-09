@@ -8,6 +8,17 @@ $(document).ready(function(){
         'max': 100
     }
   });
+  if (window.location.hash) {
+    var startHash = window.location.hash.slice(1);
+    var hashArray = [];
+    $(".owl-carousel .card").each(function(index) {
+      hashArray.push($(this).data('hash'));
+    });
+    var startPosition = hashArray.indexOf(startHash);
+  }
+  else {
+    var startPosition = 0;
+  }
   var owl = $('#event-carousel');
   var currentState = '';
   owl.on('initialized.owl.carousel', function(event) {
@@ -40,6 +51,8 @@ $(document).ready(function(){
     stagePadding: 60,
     nav: false,
     dots: false,
+    URLhashListener:true,
+    startPosition: startPosition
   });
 
   owl.on('translated.owl.carousel', function(event) {
@@ -62,7 +75,14 @@ $(document).ready(function(){
     }
     else {
       maxSlider = currentState.relatedTarget._coordinates[coordIndex];
+      currentIndex = currentState.item.index;
+      if (currentIndex == 0) {
+        currentValue = 0;
+      } else {
+        currentValue = Math.abs(currentState.relatedTarget._coordinates[currentIndex - 1]);
+      }
       slider.noUiSlider.updateOptions({
+        start: currentValue,
         range: {
           'min': 0,
           'max': Math.abs(maxSlider)

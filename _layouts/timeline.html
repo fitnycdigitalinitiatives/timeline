@@ -33,7 +33,7 @@ layout: default
       {% assign decade = group.name  %}
       {% assign count = 0  %}
       {% for event in group.items %}
-      <div class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}">
+      <div class="card text-white shadow" data-dateStart="{{ event.dateStart | date: "%Y" }}" data-hash="{{ event.title | url_encode }}">
         {% if count == 0 %}
         <h2 class="decade text-dark font-italic">{{decade}}0's</h2>
         {% endif %}
