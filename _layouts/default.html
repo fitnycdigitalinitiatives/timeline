@@ -18,6 +18,11 @@
   {% if page.title == "Timeline" %}
   <script src="{{ '/assets/javascript/nouislider/nouislider.min.js' | relative_url }}"></script>
   <script src="{{ '/assets/javascript/timeline-owl.js' | relative_url }}"></script>
+  <script src="{{ '/assets/javascript/tag-owl.js' | relative_url }}"></script>
+  {% endif %}
+  {% if page.title == "Timeline (Grid-View)" %}
+  <script src="{{ '/assets/javascript/timeline-owl.js' | relative_url }}"></script>
+  <script src="{{ '/assets/javascript/tag-owl.js' | relative_url }}"></script>
   {% endif %}
   {% if page.title == "Single" %}
   <script src="{{ '/assets/javascript/nouislider/nouislider.min.js' | relative_url }}"></script>
